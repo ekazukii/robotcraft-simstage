@@ -1,0 +1,19 @@
+<launch>
+  <!-- allow remapping of scan & map topics via args -->
+  <arg name="scan_topic" default="/gmap_scans"/>
+  <arg name="map_topic"  default="/map"/>
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" respawn="true">
+    <!-- where to read laser scans from -->
+    <remap from="scan" to="$(arg scan_topic)"/>
+    <!-- where to publish the OccupancyGrid map -->
+    <remap from="map"  to="$(arg map_topic)"/>
+
+    <!-- tuning params -->
+    <param name="maxRange" value="4.0"/>
+    <param name="xmin"     value="0.0"/>
+    <param name="ymin"     value="0.0"/>
+    <param name="xmax"     value="42.0"/>
+    <param name="ymax"     value="42.0"/>
+  </node>
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen" respawn="true">
+        <remap from="scan" to="/base_scan"/>
+        <param name="maxRange" value="4"/>
+        <param name="xmin" value="0.0"/>
+        <param name="ymin" value="0.0"/>
+        <param name="xmax" value="42.0"/>
+        <param name="ymax" value="42.0"/>
+    </node>
+</launch>
